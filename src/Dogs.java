@@ -3,6 +3,15 @@ public class Dogs {
     String name;
     double weight;
     String breed;
+
+    public Dogs() {
+        this.breed = "lamba";
+    }
+
+    public Dogs(String breed) {
+        this.breed = breed;
+    }
+
     public void sayGav(){
         System.out.println("Gav Gav!");
     }

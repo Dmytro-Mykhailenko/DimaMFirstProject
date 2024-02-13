@@ -3,12 +3,18 @@ public class Dogs {
     String name;
     double weight;
     String breed;
+    static int count=0;
 
-    public Dogs() {
-        this.breed = "lamba";
+    public Dogs(){
+        count++;
+        System.out.println("We make new dog!");
     }
+    //public Dogs() {
+       // this.breed = "Dvornyaga";
+    //}
 
     public Dogs(String breed) {
+        count++;
         this.breed = breed;
     }
 

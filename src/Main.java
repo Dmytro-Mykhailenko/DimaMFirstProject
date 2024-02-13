@@ -26,6 +26,7 @@ public class Main {
         System.out.println(result);
         System.out.println(mySecondDog.sumTwoNumbers(11, 6));
 
+        System.out.println(Dogs.count);
         // class BloodAnalisys
         BloodAnalysis bloodAnalysis = new BloodAnalysis();
 

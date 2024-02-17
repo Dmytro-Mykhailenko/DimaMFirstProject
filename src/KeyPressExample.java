@@ -1,6 +1,11 @@
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-public class KeyPressExample implements KeyListener {
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
+
+class JKeyPressExample implements KeyListener {
+
     public void keyTyped(KeyEvent e) {
 // Обработка события нажатия клавиши
         if (e.getKeyChar()==KeyEvent.VK_F2)
@@ -15,5 +20,8 @@ public class KeyPressExample implements KeyListener {
         System.out.println("Key released");
     }
 
+}
+
+public static void main(String[] args) {
 
 }

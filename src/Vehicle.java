@@ -3,7 +3,20 @@
 //
 // Построение подкласса Vehicle для представления грузовиков.
 
-public class Vehicle {
+interface IVehicle{
+
+    int getFuelcap();
+
+    void setFuelcap(int f);
+
+    int getMpg();
+
+    void setMpg(int m);
+
+}
+
+
+public class Vehicle implements IVehicle {
     private int passengers;
     private int fuelcap;
     private int mpg;
@@ -27,10 +40,10 @@ public class Vehicle {
     // Методы доступа к переменным экземпляра,
     int getPassengers() { return passengers; }
     void setPassengers(int p) { passengers = p; }
-    int getFuelcap() { return fuelcap; }
-    void setFuelcap(int f) { fuelcap = f; }
-    int getMpg() { return mpg; }
-    void setMpg(int m) { mpg = m; }
+    public int getFuelcap() { return fuelcap; }
+    public void setFuelcap(int f) { fuelcap = f; }
+    public int getMpg() { return mpg; }
+    public void setMpg(int m) { mpg = m; }
 }
 
 //Расширение класса Vehicle для создания специализированного класса Truck
@@ -64,7 +77,7 @@ class TruckDemo {
 }
 
 
-        class VehConsDemo {
+class VehConsDemo {
     public static void main(String[] args) {
 
 // Создать объекты транспортных средств.

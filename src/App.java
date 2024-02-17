@@ -1,7 +1,18 @@
-package org.example;
-public class App
-{
+public class App {
     public static void main( String[] args ) {
+
+        // Символы Unicode и 10-тичный код
+        char ch=0;
+
+        System.out.println(ch=65386);
+        System.out.println(ch=65396);
+        System.out.println(ch=65406);
+
+        for(int i=1;i<65536;i++ ) {
+            System.out.print((char) i + " "+ i + "| ");
+            if (i % 10 == 0) System.out.println();
+        }
+
         double[] area1=new double[10];
         int i;
         double sum=0;

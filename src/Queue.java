@@ -2,7 +2,12 @@
 Упражнение 5.2.
 Класс очереди для символов.
 */
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Scanner;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
 class Queue {
     char[] q;
@@ -37,7 +42,7 @@ class Queue {
     }
 
     //      Методы
-    // Поместить символ в очередь, управляет nextFilled
+    // Поместить символ в очередь, управляет nextFree
     void puts(char ch) {
         if (freeSlotsN == 0) {
             System.out.println("\nNo free slots");
@@ -49,7 +54,7 @@ class Queue {
         freeSlotsN--;
     }
 
-    // Извлечь символ из очереди, управляет nextFree
+    // Извлечь символ из очереди, управляет nextFilled
     char gets() {
         if (freeSlotsN == q.length) {
             System.out.println("\nNo data");
@@ -80,14 +85,30 @@ class Queue {
 }
 
 // Демонстрация использования класса Queue,
-class QDemo {
+class QDemo implements KeyListener {
+
+    String str;
+    KeyListener k;
+
+    public QDemo() {
+        addKeyListener(this);
+    }
+
+    public String listen(){
+
+        Scanner scanner = new Scanner(System.in);
+        str=scanner.nextLine();
+        return str;
+    }
     public static void main(String[] args)
             throws java.io.IOException {
 
-
+        QDemo qd=new QDemo();
 
         char ch=0 ;
         int code ;
+        String st;
+        /*
         while ( -1 != (code = System.in.read ()) )
         {
             ch = (char) code ;
@@ -100,6 +121,9 @@ class QDemo {
             }
         }
 
+         */
+        st=qd.listen();
+
         Queue bigQ = new Queue(10);
         Queue smallQ = new Queue(4);
         //char ch='0', ignore;
@@ -108,7 +132,6 @@ class QDemo {
         Scanner inp=new Scanner(System.in);
         str=System.in.toString();
         System.out.println(str);
-        KeyPressExample exempl=new KeyPressExample();
 
         do {
             ch= (char) System.in.read();
@@ -144,6 +167,23 @@ class QDemo {
             if(ch != (char) 0) System.out.print(ch);
         }
     }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        System.out.println("Key taped");
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println("key pressed");
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        System.out.println("key relised");
+
+    }
 }
 
 /*
@@ -156,14 +196,17 @@ class QDemo {
 использовать класс Queue; просто измените способ доступа к данным.)
  */
 
-class Stack {
+class Stack1 {
     private char[] q;
     private int loc; // индексы для позиций помещения и извлечения
-    Stack(int size) {
+    Stack1(int size) {
         q = new char[size]; // выделение памяти под очередь
         loc = 0;
     }
     // Поместить символ в очередь,
+    int getLength(){
+        return q.length;
+    }
     void push(char ch) {
         if(loc==q.length) {
             System.out.println(" - Достигнут конец стека.");
@@ -183,19 +226,19 @@ class Stack {
 
 class QDemo1 {
     public static void main(String[] args) {
-        Stack bigQ = new Stack(10);
-        Stack smallQ = new Stack(4);
+        Stack1 bigQ = new Stack1(10);
+        Stack1 smallQ = new Stack1(4);
         char ch;
         int i;
         System.out.print("Использование bigQ для сохранения алфавита. ");
 // Поместить в bigQ коды букв,
-        for (i = 0; i < 10; i++)
+        for (i = 0; i < bigQ.getLength(); i++)
         {bigQ.push((char) ('A' + i));
         System.out.print((char) ('A' + i));}
         System.out.println();
 // Извлечь и отобразить элементы bigQ.
         System.out.print("Содержимое bigQ: ");
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < bigQ.getLength()+1; i++) {
             ch = bigQ.pop();
             if (ch != (char) 0) System.out.print(ch);
         }

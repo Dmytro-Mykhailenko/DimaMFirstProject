@@ -1,12 +1,22 @@
+import java.io.IOException;
+
 public class App {
-    public static void main( String[] args ) {
+    public static void main( String[] args ) throws IOException {
+
+
 
         // Символы Unicode и 10-тичный код
         char ch=0;
+        int h;
 
         System.out.println(ch=65386);
         System.out.println(ch=65396);
         System.out.println(ch=65406);
+
+        h=System.in.read();
+
+        System.out.println((char) h);
+        System.out.println();
 
         for(int i=1;i<65536;i++ ) {
             System.out.print((char) i + " "+ i + "| ");

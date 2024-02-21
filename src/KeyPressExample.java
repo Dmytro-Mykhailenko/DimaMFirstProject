@@ -1,14 +1,17 @@
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
+import java.io.IOException;
 
 class JKeyPressExample implements KeyListener {
 
+    int h;
+
+    void JKeyPressExample(){
+
+    }
+
     public void keyTyped(KeyEvent e) {
 // Обработка события нажатия клавиши
-        if (e.getKeyChar()==KeyEvent.VK_F2)
         System.out.println("Key typed");
     }
     public void keyPressed(KeyEvent e) {
@@ -20,8 +23,12 @@ class JKeyPressExample implements KeyListener {
         System.out.println("Key released");
     }
 
-}
 
-public static void main(String[] args) {
 
+public static void main() throws IOException {
+
+    JKeyPressExample j=new JKeyPressExample();
+    j.h=System.in.read();
+
+    }
 }
